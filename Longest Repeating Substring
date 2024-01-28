@@ -1,0 +1,21 @@
+int longestRepeatingSubstring(string &str, int k) {
+     int i=0;
+     int n=str.size();
+     int j=0;
+     map<char,int>mpp;
+     int mx=0;
+     int ans=0;
+     while(j<n)
+     {
+         mpp[str[j]]++;
+         mx=max(mx,mpp[str[j]]);
+         while(j-i+1-mx>k)
+         {
+             mpp[str[i]]--;
+             i++;
+         }
+         ans=max(ans,j-i+1);
+         j++;
+     }
+     return ans;
+}
